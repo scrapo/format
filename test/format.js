@@ -46,7 +46,10 @@ suite('format', function () {
 			assert.throws(function () { format('Lorem {prefix-{test}-suffix} sit', {}); }, /Missing value "test"/);
 		});
 		test('with string and optional missing value returns string', function () {
-			assert.equal(format('Lorem {prefix-{?test}-suffix} sit', {}), 'Lorem prefix--suffix sit');
+			assert.equal(format('Lorem {prefix-{?test}-suffix}', {}), 'Lorem ');
+		});
+		test('with string and optional missing value returns string', function () {
+			assert.equal(format('Lorem {prefix-{?test}-suffix} sit', {}), 'Lorem  sit');
 		});
 	});
 });

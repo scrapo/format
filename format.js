@@ -20,8 +20,11 @@ const strategies = {
 	},
 	string: function (s, values) {
 		return s.replace(regExp, function (match, prefix, optional, key, suffix) {
-			if (optional || values[key]) {
+			if (values[key]) {
 				return prefix + (values[key] || '') + suffix;
+			}
+			if (optional) {
+				return '';
 			}
 			throw new Error('Missing value "' + key + '"');
 		});
